@@ -6,7 +6,7 @@ Validate details in the Jenkinsfile for : Webserver Path,Credentials ID.
 pipeline {
     agent any
     tools {
-        maven 'Maven_Local'
+        maven 'maven_Local'
     }
     parameters {
         string(name: 'SDLC_ENV', defaultValue: '', description: 'Enter SDLC Environment')
@@ -41,7 +41,7 @@ pipeline {
                 environment name: 'SDLC_ENV', value: 'qa'
             }
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat_creds', path: '', url: 'http://172.31.23.129:8080/')], contextPath: 'qa-java-tomcat-pipeline-sample', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat_creds', path: '', url: 'http://172.31.20.107:8080/')], contextPath: 'qa-java-tomcat-pipeline-sample', war: '**/*.war'
             }
         }
         stage('DeployToProd') {
@@ -49,7 +49,7 @@ pipeline {
                 environment name: 'SDLC_ENV', value: 'prod'
             }
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat_creds', path: '', url: 'http://172.31.23.129:8080/')], contextPath: 'prod-java-tomcat-pipeline-sample', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat_creds', path: '', url: 'http://172.31.20.107:8080/')], contextPath: 'prod-java-tomcat-pipeline-sample', war: '**/*.war'
             }
         }
     }
