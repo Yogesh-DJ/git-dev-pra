@@ -6,7 +6,7 @@ Validate details in the Jenkinsfile for : Webserver Path,Credentials ID.
 pipeline {
     agent any
     tools {
-        maven 'maven_Local'
+        maven 'maven _Local'
     }
     parameters {
         string(name: 'SDLC_ENV', defaultValue: '', description: 'Enter SDLC Environment')
